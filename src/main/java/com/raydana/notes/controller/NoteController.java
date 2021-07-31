@@ -1,5 +1,6 @@
 package com.raydana.notes.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -26,8 +27,8 @@ public class NoteController {
     private NoteService noteService;
 
     @GetMapping("/notes")
-    public List<Note> getAllNotesByUsername(@RequestHeader("header-username") String username) {
-        return noteService.getAllByUsername(username);
+    public List<Note> getAllNotesByUsername(Principal principal) {
+        return noteService.getAllByUsername();
     }
  
 

@@ -5,7 +5,7 @@ import java.util.List;
 import com.raydana.notes.model.Note;
 
 public interface NoteService {
-	public List<Note> getAllByUsername(String username);
+	public List<Note> getAllByUsername();
 	public List<Note> getAll();
 	public Note save(Note note);
 	public Note findById(Long id);

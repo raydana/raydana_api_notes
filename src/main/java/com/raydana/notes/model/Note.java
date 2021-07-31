@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import java.util.Date;
 
 @Entity
@@ -18,8 +20,9 @@ import java.util.Date;
 public class Note extends Base {
 
 	@NotBlank
+	@Size(max=50)
 	private String title;
-	
+	@Size(max=1000)
 	private String note;
 	@NotBlank
 	@Email

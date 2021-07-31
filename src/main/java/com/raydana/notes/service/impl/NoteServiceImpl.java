@@ -1,22 +1,36 @@
-package com.raydana.notes.service;
+package com.raydana.notes.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.raydana.notes.exception.ResourceNotFoundException;
 import com.raydana.notes.model.Note;
+import com.raydana.notes.model.User;
 import com.raydana.notes.repository.NoteRepository;
+import com.raydana.notes.service.NoteService;
 
 @Service
 public class NoteServiceImpl implements NoteService {
 	@Autowired
 	private NoteRepository noteRepository; 
 
+	private User getPrincipal() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null && auth.getPrincipal() != null) {
+			if (auth.getPrincipal() instanceof User) {
+				return (User) auth.getPrincipal();
+			}
+		}
+		return null;
+	}
+	
 	@Override
-	public List<Note> getAllByUsername(String username) {
-		return noteRepository.getAllByUsername(username);
+	public List<Note> getAllByUsername() {
+		return noteRepository.getAllByUsername(getPrincipal().getUsername());
 	}
 
 	@Override
