@@ -1,4 +1,3 @@
-
 package com.raydana.notes.service;
 
 import java.util.List;
