@@ -42,7 +42,7 @@ public class NoteController {
     }
 
     @PutMapping("/notes/{id}")
-    public String updateNote(@PathVariable(value = "id") Long noteId,@Valid @RequestBody Note noteDetails,@RequestHeader("header-username") String username) {
+    public String updateNote(@PathVariable(value = "id") Long noteId,@RequestBody Note noteDetails,@RequestHeader("header-username") String username) {
     	Boolean hasPermission  = noteService.userHasPermission(noteId, username);
     	if (hasPermission) {
     		Note updatedNote = noteService.update(noteId, noteDetails);
