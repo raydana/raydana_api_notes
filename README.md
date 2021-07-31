@@ -37,9 +37,9 @@ The app will start running at <http://localhost:8080>.
 
 The app defines following CRUD APIs.
 
-    show all notes by user --> GET /api/notes     notice : put username in request header with key : 'header-username'
+    + show all notes by user --> GET /api/notes     notice : put username in request header with key : 'header-username'
     
-    create new note --> POST /api/notes      
+    + create new note --> POST /api/notes      
     notice : sample body   :
     {
     "title" : "first title",
@@ -47,9 +47,9 @@ The app defines following CRUD APIs.
     "username" : "j.mirzazadeh@gmail.com"
     }
         
-    update note --> PUT /api/notes/{noteId}    notice : put username in request header with key : 'header-username' and body is like save service
+    + update note --> PUT /api/notes/{noteId}    notice : put username in request header with key : 'header-username' and body is like save service
     
-    delete user --> DELETE /api/notes/{noteId}     notice : put username in request header with key : 'header-username' 
+    + delete user --> DELETE /api/notes/{noteId}     notice : put username in request header with key : 'header-username' 
 
 You can test them using postman or any other rest client.
 
