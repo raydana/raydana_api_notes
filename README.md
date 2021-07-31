@@ -17,7 +17,7 @@ git clone https://github.com/raydana/raydana_api_notes.git
 ```
 **2. Create Mysql database**
 ```bash
-create database notes_app
+create database new_db
 ```
 
 **3. Change mysql username and password as per your installation**
