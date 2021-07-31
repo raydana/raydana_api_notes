@@ -20,7 +20,7 @@ public class Note extends Base {
 	@NotBlank
 	private String title;
 	
-	private String content;
+	private String note;
 	@NotBlank
 	@Email
 	private String username;
@@ -34,12 +34,12 @@ public class Note extends Base {
 		this.title = title;
 	}
 
-	public String getContent() {
-		return content;
+	public String getNote() {
+		return note;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 	public String getUsername() {
