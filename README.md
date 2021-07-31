@@ -27,3 +27,6 @@ create database notes_app
 + change `spring.datasource.username` and `spring.datasource.password` as per your mysql installation
 
 **4. Run the app using maven**
+```bash
+mvn spring-boot:run
+```
