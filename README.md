@@ -24,7 +24,7 @@ create database new_db
 
 + open `src/main/resources/application.properties`
 
-+ change `spring.datasource.url` to ypur mysql engine server IP
++ change `spring.datasource.url` to your mysql engine server IP
 
 + change `spring.datasource.username` and `spring.datasource.password` as per your mysql installation
 
@@ -34,6 +34,13 @@ mvn spring-boot:run
 ```
 
 The app will start running at <http://localhost:8080>.
+
+## sql scripts
+you can use this script for insert sample users
+```bash
+insert into user(id, email, password,created_at,updated_at)
+values (1,'a@a.com','1',CURDATE(),CURDATE());
+```
 
 ## Explore Rest APIs
 
