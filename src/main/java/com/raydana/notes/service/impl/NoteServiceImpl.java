@@ -34,12 +34,13 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public List<Note> getAll() {
+	public List<Note> findAll() {
 		return noteRepository.findAll();
 	}
 
 	@Override
 	public Note save(Note note) {
+		note.setUsername(getPrincipal().getUsername());
 		return noteRepository.save(note);
 	}
 
@@ -52,7 +53,7 @@ public class NoteServiceImpl implements NoteService {
 	public Note update(Long id,Note noteDetails) {
 		Note note = findById(id);
         note.setTitle(noteDetails.getTitle());
-        note.setTitle(noteDetails.getNote());
+        note.setNote(noteDetails.getNote());
         Note updatedNote = save(note);
         return updatedNote;
 	}
@@ -63,7 +64,8 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public Boolean userHasPermission(Long id, String username) {
+	public Boolean userHasPermission(Long id) {
+		String username = getPrincipal().getUsername();
 		Note note = findById(id);
 		if (note != null && username != null && !username.equals("") && note.getUsername().equals(username))
 			return Boolean.TRUE;

@@ -24,7 +24,6 @@ public class Note extends Base {
 	private String title;
 	@Size(max=1000)
 	private String note;
-	@NotBlank
 	@Email
 	private String username;
 

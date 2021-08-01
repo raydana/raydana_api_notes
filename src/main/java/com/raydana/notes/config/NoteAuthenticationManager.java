@@ -1,8 +1,5 @@
 package com.raydana.notes.config;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,46 +19,29 @@ public class NoteAuthenticationManager implements AuthenticationProvider {
 	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		System.out.println("test");
 		UsernamePasswordAuthenticationToken auth = (UsernamePasswordAuthenticationToken) authentication;
-		String username = String.valueOf(auth.getPrincipal());
-		String password = String.valueOf(auth.getCredentials());
-		System.out.println(username);
-		System.out.println(password);
-		if (username == null || password == null || username.trim().isEmpty() || password.trim().isEmpty()) {
+		String principalUserName = String.valueOf(auth.getPrincipal());
+		String principalPassword = String.valueOf(auth.getCredentials());
+		if (principalUserName == null || principalPassword == null || principalUserName.trim().isEmpty() || principalPassword.trim().isEmpty()) {
 			throw new BadCredentialsException("");
 		}
-
-		String userName = username.trim();
-
-		String correctPassword = "";
-		String userSalt = "";
-
+		String userName = principalUserName.trim();
 		try {
-			User users = userService.loadUserByUsername(userName);
-			if (users != null) {
-				//correctPassword = users.getPassword();
-				//userSalt = users.getSalt();
-				//String newPass = PassEncryptDecryptUtil.get_SHA_512_SecurePassword(password, userSalt);
-				//if (!correctPassword.equals(newPass) && !correctPassword.equals(password)) {
-				//	throw new BadCredentialsException(LanguageUtil.get("login.userpassNotValid"));
-				//}
-				//users.setPassword("");
-				
-				return new UsernamePasswordAuthenticationToken(users, null, users.getAuthorities());
+			User user = userService.loadUserByUsername(userName);
+			if (user != null && user.getPassword().equals(principalPassword)) {
+				return new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
 			}
+			else
+				throw new BadCredentialsException("username or password is invalid");
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new BadCredentialsException("");
 		}
-		return null;
 	}
 
 	@Override
 	public boolean supports(Class<?> authentication) {
 		return true;
 	}
-
-
 
 }

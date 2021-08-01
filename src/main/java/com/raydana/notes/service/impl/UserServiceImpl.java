@@ -1,5 +1,7 @@
 package com.raydana.notes.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -40,6 +42,11 @@ public class UserServiceImpl implements UserService,UserDetailsManager{
 	@Override
 	public boolean userExists(String username) {
 		return false;
+	}
+
+	@Override
+	public List<User> findAll() {
+		return userRepository.findAll();
 	}
 
 
