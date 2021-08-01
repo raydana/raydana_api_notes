@@ -18,6 +18,7 @@ public class ExportNoteModel {
 	private List<User> allUsers = new ArrayList<User>();
 	@XmlElement(name = "notes")
 	private List<Note> allNotes = new ArrayList<Note>();
+	
 	public List<User> getAllUsers() {
 		return allUsers;
 	}
