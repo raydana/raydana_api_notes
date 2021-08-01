@@ -37,7 +37,13 @@ The app will start running at <http://localhost:8080>.
 
 The app defines CRUD APIs.
 
-You can view or  test them using ths link  <http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config>.
+You can view or test them using this link  <http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config>.
+
+## ETL Job
+In this app, an xml file of users and notes is created alternately and every hour and saved in Drive;
+you can config xml directory path.
+first open `src/main/resources/application.properties`
+and then change value of the key 'dataTransform.export.directoryPath'.
 
 ## Raydana Company website
 
