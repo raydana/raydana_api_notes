@@ -56,7 +56,7 @@ You can view or test them using this link  <http://localhost:8080/swagger-ui/ind
     "note": "sample note"
 }
 
-+ for updateNode you can use this body for input
++ for updateNode api you can use this body for input
 {    "id" : "1"
     "title": "sample title",
     "note": "sample note"
