@@ -1,5 +1,6 @@
 package com.raydana.notes.service;
 
+import java.io.File;
 import java.util.List;
 
 import com.raydana.notes.model.Note;
@@ -13,5 +14,5 @@ public interface NoteService {
 	public void delete(Long id);
 	public Boolean userHasPermission(Long id );
 	
-
+	public File exportNoteAndUsers();
 }
