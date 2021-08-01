@@ -1,5 +1,6 @@
 package com.raydana.notes.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -52,5 +53,17 @@ public class NoteController {
     		return "delete successfully";
     	}
     	return "you have not permission for delete note Id : "+noteId;
+    }
+    @PostMapping("/notes/exportNoteAndUsers")
+    public String exportNoteAndUsers() {
+    	try {
+            File exportedFile = noteService.exportNoteAndUsers();
+            if (exportedFile != null)
+            	return "export file " + exportedFile.getName() + " successfully created.";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "export file failed";
+		}
+    	return "export file failed";
     }
 }
