@@ -24,6 +24,8 @@ create database new_db
 
 + open `src/main/resources/application.properties`
 
++ change `spring.datasource.url` to ypur mysql engine server IP
+
 + change `spring.datasource.username` and `spring.datasource.password` as per your mysql installation
 
 **4. Run the app using maven**
