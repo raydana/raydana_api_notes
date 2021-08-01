@@ -37,7 +37,7 @@ The app will start running at <http://localhost:8080>.
 
 The app defines CRUD APIs.
 
-You can view or  test them using ths link  <http://localhost:8080/swagger-ui/index.html>.
+You can view or  test them using ths link  <http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config>.
 
 ## Raydana Company website
 
