@@ -46,13 +46,17 @@ values (1,'a@a.com','1',CURDATE(),CURDATE());
 
 The app defines CRUD APIs.
 You can view or test them using this link  <http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config>.
-notice : 
-for createNode api you can use this JSON body for input
+
+
+
+**notice**
++ for createNode api you can use this JSON body for input
 {
     "title": "sample title",
     "note": "sample note"
 }
-for updateNode you can use this body for input
+
++ for updateNode you can use this body for input
 {    "id" : "1"
     "title": "sample title",
     "note": "sample note"
