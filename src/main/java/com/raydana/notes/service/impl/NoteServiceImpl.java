@@ -98,7 +98,8 @@ public class NoteServiceImpl implements NoteService {
 			jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			Calendar calendar = Calendar.getInstance();
-			String fileName = "export_"  + (calendar.get(Calendar.HOUR_OF_DAY) < 10 ? "0" : "") + (calendar.get(Calendar.HOUR_OF_DAY) + (calendar.get(Calendar.MINUTE) < 10 ? "0" : "") + calendar.get(Calendar.MINUTE)) + ".xml";
+			String fileName = "export_"  + calendar.get(Calendar.YEAR) + "_" + calendar.get(Calendar.MONTH) + "_" + calendar.get(Calendar.DAY_OF_MONTH) + "_" +
+			(calendar.get(Calendar.HOUR_OF_DAY) < 10 ? "0" : "") + (calendar.get(Calendar.HOUR_OF_DAY) + (calendar.get(Calendar.MINUTE) < 10 ? "0" : "") + calendar.get(Calendar.MINUTE)) + ".xml";
 			File file = new File(exportDirectoryPath +"/"+ fileName);
 			if (!file.exists()) {
 				file.getParentFile().mkdirs();
@@ -106,6 +107,7 @@ public class NoteServiceImpl implements NoteService {
 			}
 			OutputStream os = new FileOutputStream(file);
 			jaxbMarshaller.marshal(exportNoteModel, os);
+			os.close();
 			return file;
 		} catch (Exception e) {
 			e.printStackTrace();
