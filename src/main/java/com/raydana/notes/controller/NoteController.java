@@ -29,6 +29,17 @@ public class NoteController {
     public List<Note> getAllNotesByUsername() {
         return noteService.getAllByUsername();
     }
+    
+    @GetMapping("/notes/{id}")
+    public Note getNoteById(@PathVariable(value = "id") Long noteId) throws Exception {
+    	Boolean hasPermission  = noteService.userHasPermission(noteId);
+    	if (hasPermission)
+    		return noteService.findById(noteId);
+    	else {
+    		throw new Exception("you have not permission for update note Id : "+noteId);
+    	}
+    }
+
 
     @PostMapping("/notes")
     public Note createNote(@Valid @RequestBody Note note) {
